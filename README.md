@@ -9,6 +9,8 @@ Add your own ***config.js*** file with **api_key** to make request.
 public_deploy/
 
 ## Deploy URL *for preview*
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d8af29e2-20cf-435c-ad05-f65cfe96823a/deploy-status)](https://app.netlify.com/sites/webapp-weather/deploys)
+
 [Weather Viewer](https://webapp-weather.netlify.app)
 
 # Issues and Contributions
