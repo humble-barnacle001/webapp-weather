@@ -29,14 +29,19 @@
         </div>
     </nav>
 
+    <div class="alert alert-danger text-center mx-auto mt-4 hide" id="top-alert" role="alert">
+        <button class="close" id="top-alert-closer"><span>&times;</span></button>
+        <p id="top-alert-desc">No location as such found</p>
+    </div>
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto bg-secondary text-center py-5 px-3 mt-5 mb-5 rounded">
+        <div class="row mx-2">
+            <div class="col-md-6 mx-auto bg-secondary text-center pt-5 p-3 mt-5 mb-5 rounded" id="details">
                 <h1 class="text-warning" id="w-location-country"></h1>
                 <h2 data-toggle="modal" data-target="#locModal" class="edit-icon">
                     <span id="w-location"></span>
-                    <svg width="0.65em" height="0.75em" viewBox="0 0 16 16" class="bi bi-pencil edit-icon"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="0.65em" height="0.75em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
                         <path fill-rule="evenodd"
@@ -45,24 +50,68 @@
                 </h2>
                 <img src="" alt="Weather Representation" id="w-icon">
                 <h3 class="text-success" id="w-desc"></h3>
-                <h4>
-                    <span id="w-temp"></span>&deg;<span id="w-temp-unit"></span></h4>
-                <ul class="list-group mt-3" id="w-details">
+                <h4 class="edit-icon" data-toggle="modal" data-target="#locModal1">
+                    Temperature: <span id="w-temp"></span>&deg;<span class="w-temp-unit"></span>
+                    <svg width="0.75em" height="0.75em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                        <path fill-rule="evenodd"
+                            d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                    </svg>
+                </h4>
+                <ul class="list-group my-3" id="w-details">
                     <li class="list-group-item">
-                        <span id="w-feels-like"></span>&deg;<span id="w-feels-like-unit"></span>
+                        Feels Like:
+                        <span id="w-feels-like"></span>&deg;<span class="w-temp-unit"></span>
                     </li>
-                    <li class="list-group-item" id="w-pressure"></li>
-                    <li class="list-group-item" id="w-humidity"></li>
-                    <li class="list-group-item" id="w-wind"></li>
+                    <li class="list-group-item">Humidity: <span id="w-humidity"></span>&percnt;</li>
+                    <li class="list-group-item">Wind: <span id="w-wind"></span></li>
+                    <li class="list-group-item">Pressure: <span id="w-pressure"></span>mb</li>
                 </ul>
-                <!-- <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="h5 text-warning">Max: <span id="w-min-temp">25&deg;C</span></h2>
-                    </div>
-                    <div class="col-md-6">
-                        <h2 class="h5 text-warning">Min: <span id="w-max-temp">25&deg;C</span></h2>
-                    </div>
-                </div> -->
+                <button class="btn btn-info" id="btnDetails">More Details</button>
+            </div>
+
+            <div class="col-md-5 mx-auto bg-secondary text-center pt-5 p-3 mt-5 mb-5 rounded hide" id="moreDetails">
+                <h4><strong>DETAILED INFORMATION</strong></h4>
+                <h5 class="text-warning">
+                    Temperatures vary with minimum of
+                    <span class="text-primary">
+                        <strong><span id="w-temp-min"></span>&deg;<span class="w-temp-unit"></span></strong>
+                    </span>
+                    upto a maximum of
+                    <span class="text-danger">
+                        <strong><span id="w-temp-max"></span>&deg;<span class="w-temp-unit"></span></strong>
+                    </span>
+                </h5>
+                <ul class="list-group my-3" id="w-more-details">
+                    <li class="list-group-item">
+                        Probability of rain: <span id="w-rain-percent"></span>&percnt;
+                    </li>
+                    <li class="list-group-item">
+                        Amount of probable rain: <span id="w-rain-amt"></span>mm
+                    </li>
+                    <li class="list-group-item">
+                        UV Index: <span id="w-uv"></span>
+                        <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                <circle cx="8" cy="4.5" r="1" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="list-group-item">Sunrise: <span id="w-sunrise"></span></li>
+                    <li class="list-group-item">Sunset: <span id="w-sunset"></span></li>
+                    <li class="list-group-item">Moonrise: <span id="w-moonrise"></span></li>
+                    <li class="list-group-item">Moonset: <span id="w-moonset"></span></li>
+                </ul>
+                <hr>
+                <button class="btn btn-danger" id="btnClsDetails">Close Details</button>
             </div>
         </div>
     </div>
@@ -92,6 +141,49 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="locModal1" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="locModalLabel">Choose Preferred Unit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="tmp-form">
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="unitC" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="unitC">Celsius</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="unitF" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="unitF">Farenheit</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="tmpChangeBtn" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-secondary p-2 pt-3 text-center footer">
+        <div class="toTop"></div>
+        <p>Weather Reports</p>
+        <h5>
+            <a href="https://github.com/humble-barnacle001/webapp-weather">
+                View source in Github
+                <img src="img/GitHub-logo.png" alt="GitHub Logo" class="footer-github-logo">
+            </a>
+        </h5>
+    </footer>
 
 
 
