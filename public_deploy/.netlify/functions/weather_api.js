@@ -11,6 +11,7 @@ exports.handler = async (event, context) => {
         }
         const uri = `https://api.weatherapi.com/v1/forecast.json?q=${q}`;
         const response = await fetch(`${uri}&key=${apiKey}`);
+        const data = await response.json();
         if (!response.ok) {
             console.log("Problem in fetching from WEATHER API");
             return {
@@ -18,7 +19,6 @@ exports.handler = async (event, context) => {
                 body: JSON.stringify(data)
             };
         }
-        const data = await response.json();
         return {
             statusCode: 200,
             headers: {
