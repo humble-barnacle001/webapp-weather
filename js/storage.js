@@ -28,12 +28,15 @@ class Storage {
         }
     }
     setLocation(city) {
+        this.city = city;
         localStorage.setItem('city', city);
     }
     setTempUnit(unit) {
+        this.tempUnit = unit;
         localStorage.setItem('tempUnit', unit);
     }
     setTheme(theme) {
+        this.theme = theme;
         localStorage.setItem('theme', theme);
     }
 }

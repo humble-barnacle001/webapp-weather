@@ -2,7 +2,7 @@ const apiKey = process.env.WEATHER_API_KEY;
 const fetch = require('node-fetch');
 exports.handler = async (event, context) => {
     try {
-        const q = event.queryStringParameters.q || 'auto:ip';
+        const q = event.queryStringParameters.q || 'auto:New Delhi';
         if (!q) {
             return {
                 statusCode: 400,
@@ -13,7 +13,6 @@ exports.handler = async (event, context) => {
         const response = await fetch(`${uri}&key=${apiKey}`);
         const data = await response.json();
         if (!response.ok) {
-            console.log("Problem in fetching from WEATHER API");
             return {
                 statusCode: response.status,
                 body: JSON.stringify(data)
