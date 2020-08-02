@@ -3,6 +3,8 @@ const fetch = require('node-fetch');
 exports.handler = async (event, context) => {
     try {
         const q = event.queryStringParameters.q || 'auto:New Delhi';
+        console.log("Event: ", event);
+        console.log("Event: ", context);
         if (!q) {
             return {
                 statusCode: 400,
