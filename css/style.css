@@ -87,8 +87,8 @@ h6,
     bottom: 0;
     right: 0;
     border-radius: 10%;
-    opacity: 0.74;
     display: none;
+    transition: all 1s ease-in-out;
 }
 
 .toTop:hover {

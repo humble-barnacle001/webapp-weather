@@ -3,27 +3,38 @@ storage.get();
 const weather = new Weather(storage.city);
 const ui = new UI();
 let currentRES;
+initial();
 
-if (storage.theme == 'light') {
-    lightThemeSet();
-}
-else {
-    darkThemeSet();
-}
+function initial() {
+    if (storage.theme == 'light') {
+        lightThemeSet();
+    }
+    else {
+        darkThemeSet();
+    }
 
-document.getElementById('themeChanger').addEventListener('click', (e) => {
-    e.preventDefault();
-    changeTheme();
-});
-document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
-document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-document.addEventListener('DOMContentLoaded', getWeather);
-document.getElementById('w-form').addEventListener('submit', changeLoc);
-document.getElementById('w-change-loc').addEventListener('click', changeLoc);
-document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
-document.getElementById('btnClsDetails').addEventListener('click', () => ui.removeDetails());
-document.getElementById('tmp-form').addEventListener('submit', changeTmpUnit);
-document.getElementById('tmpChangeBtn').addEventListener('click', changeTmpUnit);
+    document.getElementById('themeChanger').addEventListener('click', (e) => {
+        e.preventDefault();
+        changeTheme();
+    });
+    document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
+    document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
+    document.addEventListener('DOMContentLoaded', getWeather);
+    document.getElementById('w-form').addEventListener('submit', changeLoc);
+    document.getElementById('w-change-loc').addEventListener('click', changeLoc);
+    document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
+    document.getElementById('btnClsDetails').addEventListener('click', () => ui.removeDetails());
+    document.getElementById('tmp-form').addEventListener('submit', changeTmpUnit);
+    document.getElementById('tmpChangeBtn').addEventListener('click', changeTmpUnit);
+    document.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            document.querySelector('.toTop').style.opacity = '0.74';
+        }
+        else {
+            document.querySelector('.toTop').style.opacity = '0';
+        }
+    });
+}
 
 function changeTheme() {
     if (document.getElementById('theme').getAttribute('href') === 'css/light.min.css') {
