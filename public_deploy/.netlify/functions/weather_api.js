@@ -1,42 +1,47 @@
 const apiKey = process.env.WEATHER_API_KEY;
+const uri = process.env.WEATHER_URI;
 const fetch = require('node-fetch');
+
 exports.handler = async (event, context) => {
-    try {
-        const q = event.queryStringParameters.q || 'auto:New Delhi';
+    if (event.httpMethod === 'GET') {
         try {
-            console.log("Fetch Destination: ", event.headers['sec-fetch-dest']);
-            console.log("Fetch site: ", event.headers['sec-fetch-site']);
-            console.log("Client IP: ", event.headers['client-ip']);
-            console.log("Fetch Type: ", event.headers['sec-fetch-mode']);
-            console.log("User Country: ", event.headers['x-country']);
-        }
-        catch (e) {
-            console.error("IN VARIABLES PARSING: ", e);
-        }
+            const q = event.queryStringParameters.q || 'auto:New Delhi';
 
+            if (event.headers['sec-fetch-dest'] === 'document' || event.headers['sec-fetch-site'] === 'cross-site' || event.headers['sec-fetch-mode'] === 'navigate' || event.headers['sec-fetch-site'] === 'none') {
+                console.warn("Illegal Attempt from: ", event.headers.referer);
+                console.log("Fetch Destination: ", event.headers['sec-fetch-dest']);
+                console.log("Fetch site: ", event.headers['sec-fetch-site']);
+                console.log("Client IP: ", event.headers['client-ip']);
+                console.log("Fetch Type: ", event.headers['sec-fetch-mode']);
+                console.log("User Country: ", event.headers['x-country']);
+                return {
+                    statusCode: 403,
+                    body: `Attempt to illegally access data from IP: ${event.headers['client-ip']}!!! Location Detected: ${event.headers['x-country']}!! Logging data to server!`
+                }
+            }
 
-        if (!q) {
+            const response = await fetch(`${uri}?=q${q}&key=${apiKey}`);
+            const data = await response.json();
             return {
-                statusCode: 400,
-                body: "Missing query parameters"
+                statusCode: response.status,
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(data)
             };
         }
-        const uri = `https://api.weatherapi.com/v1/forecast.json?q=${q}`;
-        const response = await fetch(`${uri}&key=${apiKey}`);
-        const data = await response.json();
-        return {
-            statusCode: response.status,
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(data)
-        };
+        catch (err) {
+            console.log("invocation error:", err);
+            return {
+                statusCode: 500,
+                body: err.message
+            };
+        }
     }
-    catch (err) {
-        console.log("invocation error:", err);
+    else {
         return {
-            statusCode: 500,
-            body: "err.message"
-        };
+            statusCode: 403,
+            body: "Only GET requests from secure sites allowed"
+        }
     }
 }
