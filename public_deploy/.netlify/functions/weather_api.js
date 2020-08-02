@@ -13,14 +13,19 @@ exports.handler = async (event, context) => {
         const uri = `https://api.weatherapi.com/v1/forecast.json?q=${q}`;
         const response = await fetch(`${uri}&key=${apiKey}`);
         const data = await response.json();
+        console.log("Response code: ", response.status);
         if (!response.ok) {
             return {
                 statusCode: response.status,
-                headers: {
-                    "content-type": "application/json"
-                },
                 body: JSON.stringify(data)
-            }
+            };
+        }
+        return {
+            statusCode: 200,
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data)
         };
     }
     catch (err) {
