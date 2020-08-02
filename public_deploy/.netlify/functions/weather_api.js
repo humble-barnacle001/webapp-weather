@@ -1,6 +1,7 @@
 const apiKey = process.env.WEATHER_API_KEY;
 const uri = process.env.WEATHER_URI;
 const fetch = require('node-fetch');
+const { getCode, getName } = require('country-list');
 
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'GET') {
@@ -13,11 +14,11 @@ exports.handler = async (event, context) => {
                 console.log("Fetch site: ", event.headers['sec-fetch-site']);
                 console.log("Client IP: ", event.headers['client-ip']);
                 console.log("Fetch Type: ", event.headers['sec-fetch-mode']);
-                console.log("User Country: ", event.headers['x-country']);
+                console.log(`User Country: ${event.headers['x-country']}, ${getName(event.headers['x-country'])}`);
                 console.warn("--------------------------------------------");
                 return {
                     statusCode: 403,
-                    body: `Attempt to illegally access data from IP: ${event.headers['client-ip']}!!! Location Detected: ${event.headers['x-country']}!! Logging data to server!`
+                    body: `Attempt to illegally access data from IP: ${event.headers['client-ip']}!!! Location Detected: ${getName(event.headers['x-country'])}!! Logging data to server!`
                 }
             }
 
@@ -42,7 +43,7 @@ exports.handler = async (event, context) => {
     else {
         return {
             statusCode: 403,
-            body: "Only GET requests from secure sites allowed"
+            body: "Only GET requests from secure sites allowed!!!"
         }
     }
 }
