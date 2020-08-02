@@ -3,8 +3,7 @@ const fetch = require('node-fetch');
 exports.handler = async (event, context) => {
     try {
         const q = event.queryStringParameters.q || 'auto:New Delhi';
-        console.log("Event: ", event);
-        console.log("Event: ", context);
+        console.log("Event Headers: ", event.headers);
         if (!q) {
             return {
                 statusCode: 400,
@@ -17,15 +16,11 @@ exports.handler = async (event, context) => {
         if (!response.ok) {
             return {
                 statusCode: response.status,
+                headers: {
+                    "content-type": "application/json"
+                },
                 body: JSON.stringify(data)
-            };
-        }
-        return {
-            statusCode: 200,
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(data)
+            }
         };
     }
     catch (err) {
