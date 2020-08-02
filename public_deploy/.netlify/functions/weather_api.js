@@ -14,13 +14,14 @@ exports.handler = async (event, context) => {
                 console.log("Client IP: ", event.headers['client-ip']);
                 console.log("Fetch Type: ", event.headers['sec-fetch-mode']);
                 console.log("User Country: ", event.headers['x-country']);
+                console.warn("--------------------------------------------");
                 return {
                     statusCode: 403,
                     body: `Attempt to illegally access data from IP: ${event.headers['client-ip']}!!! Location Detected: ${event.headers['x-country']}!! Logging data to server!`
                 }
             }
 
-            const response = await fetch(`${uri}?=q${q}&key=${apiKey}`);
+            const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             return {
                 statusCode: response.status,
