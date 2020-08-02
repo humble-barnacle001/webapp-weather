@@ -3,7 +3,18 @@ const fetch = require('node-fetch');
 exports.handler = async (event, context) => {
     try {
         const q = event.queryStringParameters.q || 'auto:New Delhi';
-        console.log("Event Headers: ", event.headers);
+        try {
+            console.log("Fetch Destination: ", event.headers['sec-fetch-dest']);
+            console.log("Fetch site: ", event.headers['sec-fetch-site']);
+            console.log("Client IP: ", event.headers['client-ip']);
+            console.log("Fetch Type: ", event.headers['sec-fetch-mode']);
+            console.log("User Country: ", event.headers['x-country']);
+        }
+        catch (e) {
+            console.error("IN VARIABLES PARSING: ", e);
+        }
+
+
         if (!q) {
             return {
                 statusCode: 400,
@@ -13,15 +24,8 @@ exports.handler = async (event, context) => {
         const uri = `https://api.weatherapi.com/v1/forecast.json?q=${q}`;
         const response = await fetch(`${uri}&key=${apiKey}`);
         const data = await response.json();
-        console.log("Response code: ", response.status);
-        if (!response.ok) {
-            return {
-                statusCode: response.status,
-                body: JSON.stringify(data)
-            };
-        }
         return {
-            statusCode: 200,
+            statusCode: response.status,
             headers: {
                 "content-type": "application/json"
             },
