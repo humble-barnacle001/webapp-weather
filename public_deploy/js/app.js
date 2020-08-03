@@ -6,6 +6,14 @@ let currentRES;
 initial();
 
 function initial() {
+    const srchString = window.location.search.substring(window.location.search.indexOf('=') + 1).toLowerCase();
+    if (srchString != '') {
+        changeLoc(srchString);
+        setTimeout(() => window.history.pushState(srchString, `Weather of ${srchString}`, '/'), 3000);
+    }
+    else {
+        document.addEventListener('DOMContentLoaded', getWeather);
+    }
     if (storage.theme == 'light') {
         lightThemeSet()
     } else {
@@ -54,20 +62,31 @@ function lightThemeSet() {
 }
 
 function changeLoc(e) {
-    e.preventDefault();
     let prev = weather.city;
-    weather.changeLocation(document.getElementById('city').value);
-    weather.getWeather().then(res => {
-        if (!res.error) {
-            ui.paint(res, storage);
-            currentRES = res;
-            storage.setLocation(weather.city)
-        } else {
-            ui.paintAlert(weather.city);
-            weather.changeLocation(prev);
-            storage.setLocation(prev)
-        }
-    }).catch(err => console.error(err));
+    if (typeof e == 'object') {
+        e.preventDefault();
+        weather.changeLocation(document.getElementById('city').value);
+    }
+    else {
+        weather.changeLocation(e);
+    }
+    weather.getWeather()
+        .then(res => {
+            if (!res.error) {
+                ui.paint(res, storage);
+                currentRES = res;
+                storage.setLocation(weather.city);
+            }
+            else {
+                ui.paintAlert(weather.city);
+                if (e != 'object') {
+                    changeLoc(prev);
+                }
+                weather.changeLocation(prev);
+                storage.setLocation(prev);
+            }
+        })
+        .catch(err => console.error(err));
     $('#locModal').modal('hide');
     document.getElementById('city').value = ''
 }
@@ -91,5 +110,5 @@ function getWeather() {
         } else {
             ui.paintAlert(weather.city)
         }
-    }).catch(err => console.error(err))
+    }).catch(err => console.error(err));
 }

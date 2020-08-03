@@ -6,6 +6,14 @@ let currentRES;
 initial();
 
 function initial() {
+    const srchString = window.location.search.substring(window.location.search.indexOf('=') + 1).toLowerCase();
+    if (srchString != '') {
+        changeLoc(srchString);
+        setTimeout(() => window.history.pushState(srchString, `Weather of ${srchString}`, '/'), 3000);
+    }
+    else {
+        document.addEventListener('DOMContentLoaded', getWeather);
+    }
     if (storage.theme == 'light') {
         lightThemeSet();
     }
@@ -19,7 +27,6 @@ function initial() {
     });
     document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
     document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-    document.addEventListener('DOMContentLoaded', getWeather);
     document.getElementById('w-form').addEventListener('submit', changeLoc);
     document.getElementById('w-change-loc').addEventListener('click', changeLoc);
     document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
@@ -58,9 +65,14 @@ function lightThemeSet() {
 }
 
 function changeLoc(e) {
-    e.preventDefault();
     let prev = weather.city;
-    weather.changeLocation(document.getElementById('city').value);
+    if (typeof e == 'object') {
+        e.preventDefault();
+        weather.changeLocation(document.getElementById('city').value);
+    }
+    else {
+        weather.changeLocation(e);
+    }
     weather.getWeather()
         .then(res => {
             if (!res.error) {
@@ -70,6 +82,9 @@ function changeLoc(e) {
             }
             else {
                 ui.paintAlert(weather.city);
+                if (e != 'object') {
+                    changeLoc(prev);
+                }
                 weather.changeLocation(prev);
                 storage.setLocation(prev);
             }

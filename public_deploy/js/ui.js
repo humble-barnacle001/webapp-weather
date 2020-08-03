@@ -74,7 +74,7 @@ class UI {
     }
 
     paintAlert(loc) {
-        this.alertDesc.textContent = `No city named "${loc}" found!!!`;
+        this.alertDesc.innerHTML = `No city named "${loc}" found!!<br>Reset to previous viewed city!`;
         this.alert.classList.remove('hide');
         setTimeout(() => this.closeAlert(), 5000);
     }
