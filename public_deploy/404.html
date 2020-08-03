@@ -11,7 +11,7 @@
     <h1 class="display">PAGE NOT FOUND</h1>
     <script>
         console.log(window.location);
-        setTimeout(() => window.location.href = '/', 10000);
+        setTimeout(() => window.location.href = `/?city=${window.location.pathname.substring(1)}`, 10000);
     </script>
 </body>
 
