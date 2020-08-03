@@ -6,6 +6,9 @@ let currentRES;
 initial();
 
 function initial() {
+    console.log("RUNNING INIT");
+    if (window.location.search.substring(window.location.search.indexOf('=') + 1).toLowerCase() != '')
+        setTimeout(() => window.location.href = `/`, 5000);
     if (storage.theme == 'light') {
         lightThemeSet()
     } else {
