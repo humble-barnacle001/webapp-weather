@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found</title>
+    <title>Redirecting to city</title>
 </head>
 
 <body>
-    <h1 class="display">PAGE NOT FOUND</h1>
+    <h1 class="display">Redirecting to specified city.......</h1>
     <script>
-        console.log(window.location);
-        setTimeout(() => window.location.href = `/?city=${window.location.pathname.substring(1)}`, 10000);
+        window.location.href = `/?city=${window.location.pathname.substring(1)}`;
     </script>
 </body>
 
