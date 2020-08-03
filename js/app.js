@@ -2,8 +2,20 @@ const storage = new Storage();
 storage.get();
 const weather = new Weather(storage.city);
 const ui = new UI();
+const ac = new Autocomplete();
 let currentRES;
 initial();
+
+//ocation suggest TEST
+document.getElementById('city').addEventListener('keyup', () => ac.getResults());
+document.getElementById('srchSugg').addEventListener('click', (e) => {
+    e.preventDefault();
+    ac.getcityName(e.target.getAttribute('data-link'))
+        .then(r => changeLoc(r.name.normalize('NFKD').replace(/[\u0300-\u036F]/g, '')))
+        .catch(err => console.warn(err));
+
+});
+//Location Suggest Test END
 
 function initial() {
     const srchString = window.location.search.substring(window.location.search.indexOf('=') + 1).toLowerCase();
@@ -27,8 +39,6 @@ function initial() {
     });
     document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
     document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-    document.getElementById('w-form').addEventListener('submit', changeLoc);
-    document.getElementById('w-change-loc').addEventListener('click', changeLoc);
     document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
     document.getElementById('btnClsDetails').addEventListener('click', () => ui.removeDetails());
     document.getElementById('tmp-form').addEventListener('submit', changeTmpUnit);
@@ -41,10 +51,11 @@ function initial() {
             document.querySelector('.toTop').style.opacity = '0';
         }
     });
+    $('#locModal').on('hidden.bs.modal', () => ui.resetSrchUI());
 }
 
 function changeTheme() {
-    if (document.getElementById('theme').getAttribute('href') === 'css/light.min.css') {
+    if (document.getElementById('theme').getAttribute('href') === 'css/light.css') {
         darkThemeSet();
     }
     else {
@@ -53,13 +64,13 @@ function changeTheme() {
 }
 
 function darkThemeSet() {
-    document.getElementById('theme').setAttribute('href', `css/dark.min.css`);
+    document.getElementById('theme').setAttribute('href', `css/dark.css`);
     document.getElementById('themeChanger').setAttribute('fill', `#fff`);
     storage.setTheme('dark');
 }
 
 function lightThemeSet() {
-    document.getElementById('theme').setAttribute('href', `css/light.min.css`);
+    document.getElementById('theme').setAttribute('href', `css/light.css`);
     document.getElementById('themeChanger').setAttribute('fill', `#333`);
     storage.setTheme('light');
 }
@@ -91,7 +102,6 @@ function changeLoc(e) {
         })
         .catch(err => console.error(err));
     $('#locModal').modal('hide');
-    document.getElementById('city').value = '';
 }
 
 function changeTmpUnit() {

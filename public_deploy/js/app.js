@@ -2,6 +2,7 @@ const storage = new Storage();
 storage.get();
 const weather = new Weather(storage.city);
 const ui = new UI();
+const ac = new Autocomplete();
 let currentRES;
 initial();
 
@@ -25,8 +26,6 @@ function initial() {
     });
     document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
     document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-    document.getElementById('w-form').addEventListener('submit', changeLoc);
-    document.getElementById('w-change-loc').addEventListener('click', changeLoc);
     document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
     document.getElementById('btnClsDetails').addEventListener('click', () => ui.removeDetails());
     document.getElementById('tmp-form').addEventListener('submit', changeTmpUnit);
@@ -37,8 +36,19 @@ function initial() {
         } else {
             document.querySelector('.toTop').style.opacity = '0'
         }
-    })
+    });
+    $('#locModal').on('hidden.bs.modal', () => ui.resetSrchUI());
 }
+
+// Location suggest
+document.getElementById('city').addEventListener('keyup', () => ac.getResults());
+document.getElementById('srchSugg').addEventListener('click', (e) => {
+    e.preventDefault();
+    ac.getcityName(e.target.getAttribute('data-link'))
+        .then(r => changeLoc(r.name.normalize('NFKD').replace(/[\u0300-\u036F]/g, '')))
+        .catch(err => console.warn(err));
+
+});
 
 function changeTheme() {
     if (document.getElementById('theme').getAttribute('href') === 'css/light.min.css') {
@@ -87,7 +97,6 @@ function changeLoc(e) {
         })
         .catch(err => console.error(err));
     $('#locModal').modal('hide');
-    document.getElementById('city').value = ''
 }
 
 function changeTmpUnit() {

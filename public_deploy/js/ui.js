@@ -101,4 +101,11 @@ class UI {
             document.getElementById('unitF').checked = true;
         }
     }
+
+
+    resetSrchUI() {
+        document.getElementById('city').value = '';
+        document.getElementById('srchSugg').innerHTML = '';
+        document.getElementById('searchAlert').classList.add('hide');
+    }
 }
