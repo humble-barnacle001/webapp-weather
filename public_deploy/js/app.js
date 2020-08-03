@@ -25,7 +25,6 @@ function initial() {
     });
     document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
     document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-    document.addEventListener('DOMContentLoaded', getWeather);
     document.getElementById('w-form').addEventListener('submit', changeLoc);
     document.getElementById('w-change-loc').addEventListener('click', changeLoc);
     document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
