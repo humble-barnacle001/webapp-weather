@@ -45,7 +45,7 @@
 
     <div class="container">
         <div class="row mx-2">
-            <div class="col-lg-7 mx-auto bg-secondary text-center pt-5 p-3 mt-5 mb-5 rounded" id="details">
+            <div class="col-md-6 mx-auto bg-secondary text-center pt-5 p-3 mt-5 mb-5 rounded" id="details">
                 <h1 class="text-warning" id="w-location-country"></h1>
                 <h2 data-toggle="modal" data-target="#locModal" class="edit-icon">
                     <span id="w-location"></span>
@@ -79,11 +79,9 @@
                     <li class="list-group-item">Pressure: <span id="w-pressure"></span>mb</li>
                 </ul>
                 <button class="btn btn-info" id="btnDetails">More Details</button>
-                <hr>
-                <p class="lead text-danger">Last updated: <span id="w-last-updated"></span></p>
             </div>
 
-            <div class="col-lg-4 mx-auto bg-secondary text-center pt-5 p-3 mt-5 mb-5 rounded hide" id="moreDetails">
+            <div class="col-md-5 mx-auto bg-secondary text-center pt-5 p-3 mt-5 mb-5 rounded hide" id="moreDetails">
                 <h4><strong>DETAILED INFORMATION</strong></h4>
                 <h5 class="text-warning">
                     Temperatures vary with minimum of
@@ -121,6 +119,7 @@
                     <li class="list-group-item">Moonrise: <span id="w-moonrise"></span></li>
                     <li class="list-group-item">Moonset: <span id="w-moonset"></span></li>
                 </ul>
+                <hr>
                 <button class="btn btn-danger" id="btnClsDetails">Close Details</button>
             </div>
         </div>
@@ -206,10 +205,10 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <!-- Self JS -->
-    <script src="js/storage.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/weather.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/storage.min.js"></script>
+    <script src="js/ui.min.js"></script>
+    <script src="js/weather.min.js"></script>
+    <script src="js/app.min.js"></script>
 </body>
 
 </html>

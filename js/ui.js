@@ -11,7 +11,6 @@ class UI {
         this.pressure = document.getElementById('w-pressure');
         this.humidity = document.getElementById('w-humidity');
         this.wind = document.getElementById('w-wind');
-        this.updated = document.getElementById('w-last-updated');
         this.alert = document.getElementById('top-alert');
         this.alertDesc = document.getElementById('top-alert-desc');
         this.details = document.getElementById('moreDetails');
@@ -32,23 +31,12 @@ class UI {
         this.mainDetails.classList.add('hide');
         this.country.textContent = w.location.country;
         this.location.textContent = `${w.location.name}, ${w.location.region}`;
-        if (window.innerWidth < 400) {
-            if (this.location.textContent.length > 17) {
-                this.location.classList.add('h4');
-                this.location.classList.remove('h2');
-            }
-            else {
-                this.location.classList.remove('h4');
-                this.location.classList.add('h2');
-            }
-        }
         this.icon.setAttribute('src', w.current.condition.icon);
         this.desc.textContent = w.current.condition.text;
         this.changeTmpUnit(s.tempUnit, w);      //PROPERTY CHANGE
         this.pressure.textContent = w.current.pressure_mb;
         this.humidity.textContent = w.current.humidity;
         this.wind.textContent = `From the ${w.current.wind_dir} at ${w.current.wind_kph} KMPH upto speeds of ${w.current.gust_kph} KMPH`;
-        this.updated.textContent = new Date(w.current.last_updated).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short", hour12: true });
         this.mainDetails.classList.remove('hide');
     }
 
