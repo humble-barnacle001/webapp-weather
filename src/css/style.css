@@ -33,7 +33,7 @@ h6,
     font-size: 1rem;
 }
 
-.alert {
+#top-alert {
     position: fixed;
     top: 4rem;
     z-index: 6;
