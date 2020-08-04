@@ -31,7 +31,7 @@ class UI {
         this.removeDetails();
         this.mainDetails.classList.add('hide');
         this.country.textContent = w.location.country;
-        this.location.textContent = `${w.location.name}${w.location.region == '' ? '' : `, ${w.location.region}`}`;
+        this.location.textContent = `${w.location.name}${w.location.region === "" ? '' : `, ${w.location.region}`}`;
         if (window.innerWidth < 400) {
             if (this.location.textContent.length > 17) {
                 this.location.classList.add('h4');
