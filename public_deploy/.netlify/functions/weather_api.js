@@ -38,6 +38,7 @@ exports.handler = async (event, context) => {
                 const latlong = await llr.json();
                 console.log(latlong.location.latlon);
                 q = `${latlong.location.latlon.latitude},${latlong.location.latlon.longtitude}`;
+                console.log(q);
             }
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
