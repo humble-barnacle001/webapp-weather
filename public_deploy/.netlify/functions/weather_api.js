@@ -20,7 +20,29 @@ exports.handler = async (event, context) => {
                 }
             }
 
-            const q = event.queryStringParameters.q || event.headers['client-ip'];
+            const q = event.queryStringParameters.q;
+            if (q == '') {
+                q = event.headers['client-ip'];
+                fetch(`https://apility-io-ip-geolocation-v1.p.rapidapi.com/${q}`,
+                    {
+                        "method": "GET",
+                        "headers":
+                        {
+                            "x-rapidapi-host": "apility-io-ip-geolocation-v1.p.rapidapi.com",
+                            "x-rapidapi-key": "ef8be487a0mshf379a8c1c9f5a42p1237d5jsn44c5375c5416",
+                            "accept": "application/json"
+                        }
+                    })
+                    .then(response => {
+                        const geolocationAPIres = response.json();
+                        console.log(geolocationAPIres);
+                        fetch(`https://api.teleport.org/api/cities/geonameid:${geolocationAPIres.ip.city_geoname_id}`)
+                            .then(res => console.log(res.json().location.loatlon));
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             return {
