@@ -21,10 +21,8 @@ exports.handler = async (event, context) => {
             }
 
             let q = event.queryStringParameters.q;
-            let response;
             if (q == '') {
                 q = event.headers['client-ip'];
-                console.log("FETCHING DATA");
                 const lres = await fetch(`https://apility-io-ip-geolocation-v1.p.rapidapi.com/${q}`,
                     {
                         "method": "GET",
@@ -35,14 +33,13 @@ exports.handler = async (event, context) => {
                             "accept": "application/json"
                         }
                     });
-                const lresj = await lres.json();
-                console.log("IP DATA FETCHED");
-                console.log(lresj);
-                // fetch(`https://api.teleport.org/api/cities/geonameid:${geolocationAPIres.ip.city_geoname_id}`)
-                //     .then(res => console.log(res.json().location.latlon));
-                // })
+                const lrj = await lres.json();
+                console.log(lrj.ip.city);
+                const llr = await fetch(`https://api.teleport.org/api/cities/geonameid:${lrj.ip.city_geoname_id}`);
+                const latlong = await llr.json();
+                console.log(latlong.location.latlong);
             }
-            response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
+            const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             return {
                 statusCode: response.status,
