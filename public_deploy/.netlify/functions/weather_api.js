@@ -41,15 +41,12 @@ exports.handler = async (event, context) => {
                         console.log(geolocationAPIres);
                         // fetch(`https://api.teleport.org/api/cities/geonameid:${geolocationAPIres.ip.city_geoname_id}`)
                         //     .then(res => console.log(res.json().location.latlon));
-                        response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
                     })
                     .catch(err => {
                         console.log(err);
                     });
             }
-            else {
-                response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
-            }
+            response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             console.log(data);
             return {
