@@ -2,13 +2,13 @@
 A "vanilla" JS application on web to show weather of a particular city
 
 # Source Folder
-[src](tree/master/src)
+[src](https://github.com/humble-barnacle001/webapp-weather/tree/master/src)
 
 # Deployment
 This project is deployed to a free [shared hosting service](https://netilfy.com) with support for lambda functions.
 
 ## Deploy Folder
-[public_deploy](tree/master/public_deploy)
+[public_deploy](https://github.com/humble-barnacle001/webapp-weather/tree/master/public_deploy)
 
 ## Deploy URL *for preview*
 [Weather Viewer](https://webapp-weather.netlify.app)
