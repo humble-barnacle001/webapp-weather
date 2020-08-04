@@ -6,7 +6,6 @@ const { getCode, getName } = require('country-list');
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'GET') {
         try {
-            console.log(event.headers);
             if (event.headers['sec-fetch-dest'] === 'document' || event.headers['sec-fetch-site'] === 'cross-site' || event.headers['sec-fetch-mode'] === 'navigate' || event.headers['sec-fetch-site'] === 'none') {
                 console.warn("Illegal Attempt from: ", event.headers.referer);
                 console.log("Fetch Destination: ", event.headers['sec-fetch-dest']);
