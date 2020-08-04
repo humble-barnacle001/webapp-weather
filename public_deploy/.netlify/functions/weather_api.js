@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
             let q = event.queryStringParameters.q;
             if (q == '') {
                 q = event.headers['client-ip'];
-                await getLatLong(event);
+                await getLatLong(q);
             }
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
@@ -51,7 +51,7 @@ exports.handler = async (event, context) => {
     }
 }
 
-async function getLatLong(event) {
+async function getLatLong(q) {
     fetch(`https://apility-io-ip-geolocation-v1.p.rapidapi.com/${q}`,
         {
             "method": "GET",
