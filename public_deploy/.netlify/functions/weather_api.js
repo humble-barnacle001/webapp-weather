@@ -65,8 +65,8 @@ async function getLatLong(q) {
         .then(response => {
             const geolocationAPIres = response.json();
             console.log(geolocationAPIres);
-            fetch(`https://api.teleport.org/api/cities/geonameid:${geolocationAPIres.ip.city_geoname_id}`)
-                .then(res => console.log(res.json().location.latlon));
+            // fetch(`https://api.teleport.org/api/cities/geonameid:${geolocationAPIres.ip.city_geoname_id}`)
+            //     .then(res => console.log(res.json().location.latlon));
         })
         .catch(err => {
             console.log(err);
