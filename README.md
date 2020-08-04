@@ -5,7 +5,7 @@ A "vanilla" JS application on web to show weather of a particular city
 [src](https://github.com/humble-barnacle001/webapp-weather/tree/master/src)
 
 # Deployment
-This project is deployed to a free [shared hosting service](https://netilfy.com) with support for lambda functions.
+This project is deployed to a free [shared hosting service](https://www.netlify.com/) with support for lambda functions.
 
 ## Deploy Folder
 [public_deploy](https://github.com/humble-barnacle001/webapp-weather/tree/master/public_deploy)
