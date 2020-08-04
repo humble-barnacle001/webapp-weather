@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
                 }
             }
 
-            const q = event.queryStringParameters.q;
+            let q = event.queryStringParameters.q;
             if (q == '') {
                 q = event.headers['client-ip'];
                 fetch(`https://apility-io-ip-geolocation-v1.p.rapidapi.com/${q}`,
