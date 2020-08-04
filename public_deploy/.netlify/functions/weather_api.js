@@ -21,11 +21,17 @@ exports.handler = async (event, context) => {
             }
 
             let q = event.queryStringParameters.q;
+            let response;
             if (q == '') {
                 q = event.headers['client-ip'];
-                await getLatLong(q);
+                getLatLong(q)
+                    .then(() => {
+                        response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
+                    });
             }
-            const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
+            else {
+                response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
+            }
             const data = await response.json();
             return {
                 statusCode: response.status,
@@ -63,7 +69,7 @@ async function getLatLong(q) {
             }
         })
         .then(response => {
-            const geolocationAPIres = await response.json();
+            const geolocationAPIres = response.json();
             console.log(geolocationAPIres);
             // fetch(`https://api.teleport.org/api/cities/geonameid:${geolocationAPIres.ip.city_geoname_id}`)
             //     .then(res => console.log(res.json().location.latlon));
