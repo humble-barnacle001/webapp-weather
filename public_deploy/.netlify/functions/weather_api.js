@@ -36,9 +36,7 @@ exports.handler = async (event, context) => {
                 const lrj = await lres.json();
                 const llr = await fetch(`https://api.teleport.org/api/cities/geonameid:${lrj.ip.city_geoname_id}`);
                 const latlong = await llr.json();
-                console.log(latlong.location.latlon);
-                q = `${latlong.location.latlon.latitude},${latlong.location.latlon.longtitude}`;
-                console.log(q);
+                q = `${latlong.location.latlon.latitude},${latlong.location.latlon.longitude}`;
             }
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
