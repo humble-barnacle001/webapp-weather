@@ -8,7 +8,7 @@ class Storage {
         if (localStorage.getItem('city')) {
             this.city = localStorage.getItem('city')
         } else {
-            this.city = "auto:New Delhi";
+            this.city = "";
             this.setLocation(this.city)
         }
         if (localStorage.getItem('tempUnit')) {

@@ -6,8 +6,6 @@ const { getCode, getName } = require('country-list');
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'GET') {
         try {
-            const q = event.queryStringParameters.q || 'auto:New Delhi';
-
             if (event.headers['sec-fetch-dest'] === 'document' || event.headers['sec-fetch-site'] === 'cross-site' || event.headers['sec-fetch-mode'] === 'navigate' || event.headers['sec-fetch-site'] === 'none') {
                 console.warn("Illegal Attempt from: ", event.headers.referer);
                 console.log("Fetch Destination: ", event.headers['sec-fetch-dest']);
@@ -22,6 +20,7 @@ exports.handler = async (event, context) => {
                 }
             }
 
+            const q = event.queryStringParameters.q || event.headers['client-ip'];
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             return {
