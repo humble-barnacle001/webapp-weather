@@ -1,12 +1,14 @@
 # webapp-weather
 A "vanilla" JS application on web to show weather of a particular city
 
-## config.js file required
-Add your own ***config.js*** file with **api_key** to make request.
-> Get api key from https://www.weatherapi.com
+# Source Folder
+[src](tree/master/src)
 
-# Deploy Folder
-[public_deploy](https://github.com/humble-barnacle001/webapp-weather/tree/master/public_deploy)
+# Deployment
+This project is deployed to a free [shared hosting service](https://netilfy.com) with support for lambda functions.
+
+## Deploy Folder
+[public_deploy](tree/master/public_deploy)
 
 ## Deploy URL *for preview*
 [Weather Viewer](https://webapp-weather.netlify.app)
