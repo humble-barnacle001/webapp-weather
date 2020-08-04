@@ -9,12 +9,13 @@
 
 <body>
     <div style="text-align: center; ">
-        <h1 style="margin-top: 2rem;">Getting weather of <span id="city"></span></h1>
+        <h1 style="margin-top: 2rem;">Getting weather of "<span id="city"></span>"</h1>
         <img src="img/Spinner-1.1s-200px.svg" alt="">
     </div>
     <script>
-        document.getElementById('city').textContent = window.location.pathname.substring(1);
-        setTimeout(() => window.location.href = `/?city=${window.location.pathname.substring(1)}`, 3000);
+        const city = window.location.pathname.substring(1)
+        document.getElementById('city').textContent = city.charAt(0).toUpperCase() + city.slice(1);
+        setTimeout(() => window.location.href = `/?city=${city}`, 3000);
     </script>
 </body>
 
