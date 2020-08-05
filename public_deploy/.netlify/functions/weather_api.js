@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
                 return {
                     statusCode: 403,
                     body: `Attempt to illegally access data from IP: ${event.headers['client-ip']}!!! Location Detected: ${getName(event.headers['x-country'])}!! Logging data to server!`
-                }
+                };
             }
 
             let q = event.queryStringParameters.q;
@@ -29,7 +29,6 @@ exports.handler = async (event, context) => {
                     q = `${lrj.latitude},${lrj.longitude}`;
                 }
             }
-            console.log(q);
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             return {
@@ -52,6 +51,6 @@ exports.handler = async (event, context) => {
         return {
             statusCode: 403,
             body: "Only GET requests from secure sites allowed!!!"
-        }
+        };
     }
 }
