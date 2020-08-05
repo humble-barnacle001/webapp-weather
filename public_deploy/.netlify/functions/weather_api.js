@@ -25,11 +25,11 @@ exports.handler = async (event, context) => {
                 q = event.headers['client-ip'];
                 const ipl = await fetch(`https://ipwhois.app/json/${q}?objects=success,latitude,longitude`);
                 const lrj = await ipl.json();
-                console.log(q, lrj);
-                if (lrj.success == 'true' && lrj.latitude != "null" && lrj.longitude != "null") {
+                if (lrj.success == true && lrj.latitude != null && lrj.longitude != null) {
                     q = `${lrj.latitude},${lrj.longitude}`;
                 }
             }
+            console.log(q);
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
             return {
