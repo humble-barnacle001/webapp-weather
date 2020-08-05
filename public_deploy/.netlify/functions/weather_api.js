@@ -23,20 +23,10 @@ exports.handler = async (event, context) => {
             let q = event.queryStringParameters.q;
             if (q == '') {
                 q = event.headers['client-ip'];
-                const lres = await fetch(`https://apility-io-ip-geolocation-v1.p.rapidapi.com/${q}`,
-                    {
-                        "method": "GET",
-                        "headers":
-                        {
-                            "x-rapidapi-host": "apility-io-ip-geolocation-v1.p.rapidapi.com",
-                            "x-rapidapi-key": "ef8be487a0mshf379a8c1c9f5a42p1237d5jsn44c5375c5416",
-                            "accept": "application/json"
-                        }
-                    });
-                const lrj = await lres.json();
-                const llr = await fetch(`https://api.teleport.org/api/cities/geonameid:${lrj.ip.city_geoname_id}`);
-                const latlong = await llr.json();
-                q = `${latlong.location.latlon.latitude},${latlong.location.latlon.longitude}`;
+                const ipl = await fetch(`https://ipwhois.app/json/${q}?objects=success,latitude,longitude`);
+                const lrj = ipl.json();
+                if (lrj.success === 'true' && lrj.latitude != "null" && lrj.longitude != "null")
+                    q = `${lrj.latitude},${lrj.longitude}`;
             }
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
             const data = await response.json();
