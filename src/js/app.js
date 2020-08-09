@@ -11,7 +11,7 @@ document.getElementById('city').addEventListener('keyup', () => ac.getResults())
 document.getElementById('srchSugg').addEventListener('click', (e) => {
     e.preventDefault();
     ac.getcityName(e.target.getAttribute('data-link'))
-        .then(r => changeLoc(r.name.normalize('NFKD').replace(/[\u0300-\u036F]/g, '')))
+        .then(r => changeLoc(`${r.location.latlon.latitude},${r.location.latlon.longitude}`))
         .catch(err => console.warn(err));
 
 });
@@ -55,7 +55,7 @@ function initial() {
 }
 
 function changeTheme() {
-    if (document.getElementById('theme').getAttribute('href') === 'css/light.css') {
+    if (document.getElementById('theme').getAttribute('href') === 'css/light.min.css') {
         darkThemeSet();
     }
     else {
@@ -64,13 +64,13 @@ function changeTheme() {
 }
 
 function darkThemeSet() {
-    document.getElementById('theme').setAttribute('href', `css/dark.css`);
+    document.getElementById('theme').setAttribute('href', `css/dark.min.css`);
     document.getElementById('themeChanger').setAttribute('fill', `#fff`);
     storage.setTheme('dark');
 }
 
 function lightThemeSet() {
-    document.getElementById('theme').setAttribute('href', `css/light.css`);
+    document.getElementById('theme').setAttribute('href', `css/light.min.css`);
     document.getElementById('themeChanger').setAttribute('fill', `#333`);
     storage.setTheme('light');
 }
