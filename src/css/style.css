@@ -46,11 +46,14 @@ h6,
 
 #details {
     animation: entry 2s ease-in-out 1 forwards;
-
 }
 
-#moreDetails {
+.dailyDetails {
     animation: entry 2s ease-in-out 1 forwards;
+}
+
+#srchSugg:hover {
+    cursor: pointer;
 }
 
 @keyframes entry {
