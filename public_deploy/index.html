@@ -309,6 +309,82 @@
         </div>
     </div>
 
+    <div class="modal fade" id="locModal2" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="locModalLabel">More details about <span id="w-det-day"></span>:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 p-4 text-center mx-auto">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        Winds Upto: <span id="w-det-wind"></span> KMPH
+                                    </li>
+                                    <li class="list-group-item">
+                                        UV Index: <span id="w-det-uv"></span>
+                                        <a href="https://en.wikipedia.org/wiki/Ultraviolet_index#Index_usage"
+                                            target="_blank" rel="noopener noreferrer">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
+                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                <path
+                                                    d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                                <circle cx="8" cy="4.5" r="1" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Visibility Upto: <span id="w-det-vis"></span> KM
+                                    </li>
+                                    <li class="list-group-item">
+                                        Sunrise: <span id="w-det-sr"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Sunset: <span id="w-det-ss"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Moonrise: <span id="w-det-mr"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Moonset: <span id="w-det-ms"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="locModal3" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="locModalLabel">Waiting</h5>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container mx-auto p-3">
+                        <img src="img/Spinner-1.1s-200px.svg" class="mx-auto d-block" alt="Loading.....">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-secondary p-2 pt-3 text-center footer">
         <div class="toTop" style="opacity: 0;"></div>
         <p>Weather Reports</p>
