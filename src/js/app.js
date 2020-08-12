@@ -4,18 +4,8 @@ const weather = new Weather(storage.city);
 const ui = new UI();
 const ac = new Autocomplete();
 let currentRES;
+let loader = false;
 initial();
-
-//ocation suggest TEST
-document.getElementById('city').addEventListener('keyup', () => ac.getResults());
-document.getElementById('srchSugg').addEventListener('click', (e) => {
-    e.preventDefault();
-    ac.getcityName(e.target.getAttribute('data-link'))
-        .then(r => changeLoc(`${r.location.latlon.latitude},${r.location.latlon.longitude}`))
-        .catch(err => console.warn(err));
-
-});
-//Location Suggest Test END
 
 function initial() {
     const srchString = window.location.search.substring(window.location.search.indexOf('=') + 1).toLowerCase();
@@ -39,8 +29,6 @@ function initial() {
     });
     document.querySelector('.toTop').addEventListener('click', () => window.scrollTo(0, 0));
     document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-    document.getElementById('btnDetails').addEventListener('click', (e) => ui.paintDetails(e, currentRES, storage));
-    document.getElementById('btnClsDetails').addEventListener('click', () => ui.removeDetails());
     document.getElementById('tmp-form').addEventListener('submit', changeTmpUnit);
     document.getElementById('tmpChangeBtn').addEventListener('click', changeTmpUnit);
     document.addEventListener('scroll', () => {
@@ -51,7 +39,24 @@ function initial() {
             document.querySelector('.toTop').style.opacity = '0';
         }
     });
+    document.getElementById('city').addEventListener('keyup', () => ac.getResults());
+    document.getElementById('srchSugg').addEventListener('click', (e) => {
+        e.preventDefault();
+        ac.getcityName(e.target.getAttribute('data-link'))
+            .then(r => changeLoc(`${r.location.latlon.latitude},${r.location.latlon.longitude}`))
+            .catch(err => console.warn(err));
+
+    });
     $('#locModal').on('hidden.bs.modal', () => ui.resetSrchUI());
+    document.querySelectorAll('.moreDetails').forEach((el) => el.addEventListener('click', (e) => {
+        e.preventDefault();
+        ui.paintDetails(currentRES, e.target.getAttribute('data-day'));
+        $('#locModal2').modal('show');
+    }));
+    $('#locModal3').on('shown.bs.modal', () => {
+        if (!loader)
+            $('#locModal3').modal('hide');
+    });
 }
 
 function changeTheme() {
@@ -84,6 +89,8 @@ function changeLoc(e) {
     else {
         weather.changeLocation(e);
     }
+    $('#locModal3').modal('show');
+    loader = true;
     weather.getWeather()
         .then(res => {
             if (!res.error) {
@@ -99,6 +106,8 @@ function changeLoc(e) {
                 weather.changeLocation(prev);
                 storage.setLocation(prev);
             }
+            loader = false;
+            $('#locModal3').modal('hide');
         })
         .catch(err => console.error(err));
     $('#locModal').modal('hide');
@@ -117,6 +126,8 @@ function changeTmpUnit() {
 }
 
 function getWeather() {
+    $('#locModal3').modal('show');
+    loader = true;
     weather.getWeather()
         .then(res => {
             if (!res.error) {
@@ -126,6 +137,8 @@ function getWeather() {
             else {
                 ui.paintAlert(weather.city);
             }
+            loader = false;
+            $('#locModal3').modal('hide');
         })
         .catch(err => console.error(err));
 }

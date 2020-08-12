@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
                     q = `${lrj.latitude},${lrj.longitude}`;
                 }
             }
-            const response = await fetch(`${uri}?q=${q}&key=${apiKey}`);
+            const response = await fetch(`${uri}?q=${q}&key=${apiKey}&days=3`);
             const data = await response.json();
             return {
                 statusCode: response.status,
