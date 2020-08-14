@@ -64,9 +64,15 @@ class UI {
     }
 
     paintAlert(loc) {
-        this.alertDesc.innerHTML = `No city named "${loc}" found!!<br>Reset to previous viewed city!`;
-        this.alert.classList.remove('hide');
-        setTimeout(() => this.closeAlert(), 5000);
+        const alertContent = `Reset to previous viewed city!`;
+        halfmoon.initStickyAlert({
+            content: alertContent,
+            title: `No city named "${loc}" found!!`,
+            alertType: "alert-danger",
+            fillType: "filled",
+            hasDismissButton: true,
+            timeShown: 10000
+        });
     }
 
     closeAlert() {
