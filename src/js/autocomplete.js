@@ -13,7 +13,7 @@ class Autocomplete {
                         this.srchQ.classList.remove('is-invalid');
                         this.alert.classList.add('hide');
                         r._embedded['city:search-results'].forEach(c => {
-                            output += `<p class="m-0 p-10 border rounded" style="white-space:nowrap; overflow: hidden;" data-link="${c._links['city:item'].href}">${c.matching_full_name}</p>`;
+                            output += `<p class="m-0 p-10 border rounded" data-link="${c._links['city:item'].href}">${c.matching_full_name}</p>`;
                         });
                     }
                     else {

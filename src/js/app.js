@@ -13,13 +13,11 @@ function initial() {
         setTimeout(() => window.history.pushState(srchString, `Weather of ${srchString}`, window.location.pathname), 3000);
     }
     else {
-        document.addEventListener('DOMContentLoaded', getWeather);
+        document.addEventListener('DOMContentLoaded', () => changeLoc(weather.city));
     }
     document.querySelector('.toTop').addEventListener('click', () => {
         document.querySelector('.content-wrapper').scrollTo(0, 0);
     });
-    // document.getElementById('top-alert-closer').addEventListener('click', () => ui.closeAlert());
-    document.getElementById('tmp-form').addEventListener('submit', changeTmpUnit);
     document.getElementById('tmpChangeBtn').addEventListener('click', changeTmpUnit);
     document.querySelector('.content-wrapper').addEventListener('scroll', () => {
         if (document.querySelector('.content-wrapper').scrollTop > 300) {
@@ -30,6 +28,8 @@ function initial() {
         }
     });
     document.getElementById('city').addEventListener('keyup', () => ac.getResults());
+    document.getElementById('w-form').addEventListener('submit', (e) => e.preventDefault());
+    document.getElementById('srchUICls').addEventListener('click', () => ui.resetSrchUI());
     document.getElementById('srchSugg').addEventListener('click', (e) => {
         e.preventDefault();
         closeModal();
@@ -58,13 +58,7 @@ function closeModal() {
 
 function changeLoc(e) {
     let prev = weather.city;
-    if (typeof e == 'object') {
-        e.preventDefault();
-        weather.changeLocation(document.getElementById('city').value);
-    }
-    else {
-        weather.changeLocation(e);
-    }
+    weather.changeLocation(e);
     showModal('locModal3');
     weather.getWeather()
         .then(res => {
@@ -97,21 +91,4 @@ function changeTmpUnit() {
         storage.setTempUnit('F');
     }
     closeModal();
-}
-
-function getWeather() {
-    showModal('locModal3');
-    weather.getWeather()
-        .then(res => {
-            if (!res.error) {
-                ui.paint(res, storage);
-                currentRES = res;
-                setTimeout(() => closeModal(), 1000);
-            }
-            else {
-                closeModal();
-                ui.paintAlert(weather.city);
-            }
-        })
-        .catch(err => console.error(err));
 }

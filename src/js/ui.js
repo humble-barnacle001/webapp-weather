@@ -81,25 +81,25 @@ class UI {
 
     changeTmpUnit(u, w) {
         if (u === 'C') {
-            this.temp.textContent = w.current.temp_c;
+            this.temp.textContent = this.tempFormatter(w.current.temp_c);
             this.tempUnit.forEach(e => e.textContent = `C`);
-            this.feels.textContent = w.current.feelslike_c;
+            this.feels.textContent = this.tempFormatter(w.current.feelslike_c);
             document.getElementById('unitC').checked = true;
             for (let i = 0; i < 3; i++) {
-                document.getElementById(`w-temp-avg-${i}`).textContent = (w.forecast.forecastday)[i].day.avgtemp_c;
-                document.getElementById(`w-temp-min-${i}`).textContent = (w.forecast.forecastday)[i].day.mintemp_c;
-                document.getElementById(`w-temp-max-${i}`).textContent = (w.forecast.forecastday)[i].day.maxtemp_c;
+                document.getElementById(`w-temp-avg-${i}`).textContent = this.tempFormatter((w.forecast.forecastday)[i].day.avgtemp_c);
+                document.getElementById(`w-temp-min-${i}`).textContent = this.tempFormatter((w.forecast.forecastday)[i].day.mintemp_c);
+                document.getElementById(`w-temp-max-${i}`).textContent = this.tempFormatter((w.forecast.forecastday)[i].day.maxtemp_c);
             }
         }
         else {
-            this.temp.textContent = w.current.temp_f;
+            this.temp.textContent = this.tempFormatter(w.current.temp_f);
             this.tempUnit.forEach(e => e.textContent = `F`);
-            this.feels.textContent = w.current.feelslike_f;
+            this.feels.textContent = this.tempFormatter(w.current.feelslike_f);
             document.getElementById('unitF').checked = true;
             for (let i = 0; i < 3; i++) {
-                document.getElementById(`w-temp-avg-${i}`).textContent = (w.forecast.forecastday)[i].day.avgtemp_f;
-                document.getElementById(`w-temp-min-${i}`).textContent = (w.forecast.forecastday)[i].day.mintemp_f;
-                document.getElementById(`w-temp-max-${i}`).textContent = (w.forecast.forecastday)[i].day.maxtemp_f;
+                document.getElementById(`w-temp-avg-${i}`).textContent = this.tempFormatter((w.forecast.forecastday)[i].day.avgtemp_f);
+                document.getElementById(`w-temp-min-${i}`).textContent = this.tempFormatter((w.forecast.forecastday)[i].day.mintemp_f);
+                document.getElementById(`w-temp-max-${i}`).textContent = this.tempFormatter((w.forecast.forecastday)[i].day.maxtemp_f);
             }
         }
     }
@@ -108,5 +108,9 @@ class UI {
         document.getElementById('city').value = '';
         document.getElementById('srchSugg').innerHTML = '';
         document.getElementById('searchAlert').classList.add('hide');
+    }
+
+    tempFormatter(t) {
+        return Math.round(t);
     }
 }
