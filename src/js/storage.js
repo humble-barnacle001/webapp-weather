@@ -2,7 +2,6 @@ class Storage {
     constructor() {
         this.city;
         this.tempUnit;
-        this.theme;
     }
     get() {
         if (localStorage.getItem('city')) {
@@ -19,13 +18,6 @@ class Storage {
             this.tempUnit = "C";
             this.setTempUnit(this.tempUnit);
         }
-        if (localStorage.getItem('theme')) {
-            this.theme = localStorage.getItem('theme');
-        }
-        else {
-            this.theme = "light";
-            this.setTheme(this.theme);
-        }
     }
     setLocation(city) {
         this.city = city;
@@ -34,9 +26,5 @@ class Storage {
     setTempUnit(unit) {
         this.tempUnit = unit;
         localStorage.setItem('tempUnit', unit);
-    }
-    setTheme(theme) {
-        this.theme = theme;
-        localStorage.setItem('theme', theme);
     }
 }

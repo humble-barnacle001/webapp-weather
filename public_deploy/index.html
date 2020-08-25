@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/light.min.css" id="theme">
+    <meta name="google-site-verification" content="oSwku9GMB4WYXsTb3a-hk_-XBXmjSAe4tbPKxgi0aPc" />
+    <link href="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.3/css/halfmoon.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
@@ -15,32 +16,15 @@
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="msapplication-config" content="icons/browserconfig.xml">
     <meta name="theme-color" content="#9fd6f8">
-    <title>Weather</title>
-
-    <style>
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
-            border-radius: 50px;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #777;
-            border-radius: 50px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-    </style>
+    <meta name="description"
+        content="An intuitive web application to show the weather of a particular city for upto three days in advance. The weather data is fetched from authentic third-party sources and is believed to be true to the best of our knowledge. The developer claims no responsiblity of the data displayed on the website as it is obtained from a third-party source.">
+    <meta name=”robots” content="index, follow">
+    <title>Weather WebApp | A simple web application to view weather of a particular city</title>
 </head>
 
+<<<<<<< HEAD
+<body data-set-preferred-theme-onload="true">
+=======
 <body>
 
     <nav class="navbar navbar-light bg-light">
@@ -150,110 +134,16 @@
                 </a>
             </div>
         </div>
+>>>>>>> master
 
-        <div class="row mx-2">
-            <div class="col-lg-5 p-3 mx-auto my-5 text-center bg-secondary rounded dailyDetails">
-                <div class="row">
-                    <div class="col-12 p-2">
-                        <h1 class="text-success">Tomorrow</h1>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-6 p-2">
-                        <img src="" alt="Weather Representation" id="w-rep-1">
-                        <h3 class="h5" id="w-desc-1"></h3>
-                        <h3 class="h1">
-                            <strong><span id="w-temp-avg-1" class="text-warning"
-                                    style="font-size: 5rem;"></span>&deg;<span class="w-temp-unit"></span></strong>
-                        </h3>
-                    </div>
-                    <div class="col-lg-6 p-2">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                Minimum:
-                                <strong><span class="text-info" id="w-temp-min-1"></span>&deg;</strong><span
-                                    class="w-temp-unit"></span>
-                            </li>
-                            <li class="list-group-item">
-                                Maximum:
-                                <strong><span class="text-danger" id="w-temp-max-1"></span>&deg;</strong><span
-                                    class="w-temp-unit"></span>
-                            </li>
-                            <li class="list-group-item">
-                                Chance of rainfall: <span id="w-rain-percent-1"></span>&percnt;
-                            </li>
-                            <li class="list-group-item">
-                                Rainfall: <span id="w-rain-amt-1"></span>mm
-                            </li>
-                            <li class="list-group-item">
-                                Average Humidity: <span id="w-humidity-1"></span>&percnt;
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <a href="#" class="ml-auto moreDetails" data-day="1">
-                    More Details >>>>
-                </a>
-            </div>
-            <div class="col-lg-5 p-3 mx-auto my-5 text-center bg-secondary rounded dailyDetails">
-                <div class="row">
-                    <div class="col-12 p-2">
-                        <h1 class="text-success">Day After</h1>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-6 p-2">
-                        <img src="" alt="Weather Representation" id="w-rep-2">
-                        <h3 class="h5" id="w-desc-2"></h3>
-                        <h3 class="h1">
-                            <strong><span id="w-temp-avg-2" class="text-warning"
-                                    style="font-size: 5rem;"></span>&deg;<span class="w-temp-unit"></span></strong>
-                        </h3>
-                    </div>
-                    <div class="col-lg-6 p-2">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                Minimum:
-                                <strong><span class="text-info" id="w-temp-min-2"></span>&deg;</strong><span
-                                    class="w-temp-unit"></span>
-                            </li>
-                            <li class="list-group-item">
-                                Maximum:
-                                <strong><span class="text-danger" id="w-temp-max-2"></span>&deg;</strong><span
-                                    class="w-temp-unit"></span>
-                            </li>
-                            <li class="list-group-item">
-                                Chance of rainfall: <span id="w-rain-percent-2"></span>&percnt;
-                            </li>
-                            <li class="list-group-item">
-                                Rainfall: <span id="w-rain-amt-2"></span>mm
-                            </li>
-                            <li class="list-group-item">
-                                Average Humidity: <span id="w-humidity-2"></span>&percnt;
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <a href="#" class="ml-auto moreDetails" data-day="2">
-                    More Details >>>>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="locModal" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal" id="locModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="locModalLabel">Change Location</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <a href="#" class="close" role="button" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </a>
+                    <h5 class="modal-title">Change Location</h5>
                 </div>
                 <div class="modal-body">
                     <form id="w-form">
@@ -262,60 +152,59 @@
                             <input type="text" name="city" id="city" class="form-control" placeholder="Enter city name">
                         </div>
                     </form>
-                    <div class="alert alert-danger text-center mx-auto mt-2 hide" role="alert" id="searchAlert">
-                        <p class="alert-heading">No location as such found!!!!</p>
+                    <div class="alert alert-danger text-center mx-auto my-10 hide" role="alert" id="searchAlert">
+                        <h3 class="alert-heading">No location as such found!!!!</h3>
                         <p>Please check your spelling!</p>
                     </div>
-                    <div id="srchSugg" class="text-center pr-2" style="max-height: 150px; overflow-y: auto;"></div>
+                    <div id="srchSugg" class="text-center pr-10" style="max-height: 200px; overflow-y: auto;"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <div class="modal-footer text-right mt-20">
+                    <a href="#" role="button" class="btn btn-danger" id="srchUICls">Close</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="locModal1" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal" id="locModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="locModalLabel">Choose Preferred Unit</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">Choose Preferred Unit</h5>
+                    <a href="#" class="close" role="button" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </a>
                 </div>
                 <div class="modal-body">
                     <form id="tmp-form">
                         <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="unitC" name="customRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="unitC">Celsius</label>
+                            <div class="custom-radio">
+                                <input type="radio" id="unitC" name="tempUnit">
+                                <label for="unitC">Celsius</label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="unitF" name="customRadio" class="custom-control-input">
-                                <label class="custom-control-label" for="unitF">Farenheit</label>
+                            <div class="custom-radio">
+                                <input type="radio" id="unitF" name="tempUnit">
+                                <label for="unitF">Farenheit</label>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="tmpChangeBtn" class="btn btn-success">Save changes</button>
+                <div class="modal-footer text-right">
+                    <button id="tmpChangeBtn" class="btn btn-success mr-5">Save changes</button>
+                    <a href="#" role="button" class="btn btn-danger">Close</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="locModal2" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal" id="locModal2" tabindex="-1" role="dialog" data-overlay-dismissal-disabled="true"
+        data-esc-dismissal-disabled="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="locModalLabel">More details about <span id="w-det-day"></span>:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">More details about <span id="w-det-day"></span>:</h5>
+                    <a href="#" class="close" role="button" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </a>
                 </div>
                 <div class="modal-body">
                     <div class="container">
@@ -359,20 +248,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <div class="modal-footer text-right">
+                    <a href="#" role="button" class="btn btn-danger">Close</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="locModal3" tabindex="-1" role="dialog" aria-labelledby="locModalLabel"
-        aria-hidden="true" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal" id="locModal3" tabindex="-1" role="dialog" data-overlay-dismissal-disabled="true"
+        data-esc-dismissal-disabled="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="locModalLabel">Getting data from servers....</h5>
-                    </button>
+                    <h5 class="modal-title">Getting data from servers....</h5>
                 </div>
                 <div class="modal-body">
                     <div class="container mx-auto p-3">
@@ -383,27 +271,247 @@
         </div>
     </div>
 
-    <footer class="bg-secondary p-2 pt-3 text-center footer">
-        <div class="toTop" style="opacity: 0;"></div>
-        <p>Weather Reports</p>
-        <h5>
-            <a href="https://github.com/humble-barnacle001/webapp-weather">
-                View source in Github
-                <img src="img/GitHub-logo.png" alt="GitHub Logo" class="footer-github-logo">
-            </a>
-        </h5>
-    </footer>
 
-    <!-- BootStrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+    <div class="page-wrapper with-navbar with-navbar-fixed-bottom">
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="navbar-brand">Weather</a>
+                <span class="navbar-text badge badge-pill badge-danger">v3.0</span>
+                <div class="navbar-content ml-auto">
+                    <a class="nav-link" id="themeChanger" onclick="halfmoon.toggleDarkMode()">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-sun" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.5 8a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z" />
+                            <path fill-rule="evenodd"
+                                d="M8.202.28a.25.25 0 0 0-.404 0l-.91 1.255a.25.25 0 0 1-.334.067L5.232.79a.25.25 0 0 0-.374.155l-.36 1.508a.25.25 0 0 1-.282.19l-1.532-.245a.25.25 0 0 0-.286.286l.244 1.532a.25.25 0 0 1-.189.282l-1.509.36a.25.25 0 0 0-.154.374l.812 1.322a.25.25 0 0 1-.067.333l-1.256.91a.25.25 0 0 0 0 .405l1.256.91a.25.25 0 0 1 .067.334L.79 10.768a.25.25 0 0 0 .154.374l1.51.36a.25.25 0 0 1 .188.282l-.244 1.532a.25.25 0 0 0 .286.286l1.532-.244a.25.25 0 0 1 .282.189l.36 1.508a.25.25 0 0 0 .374.155l1.322-.812a.25.25 0 0 1 .333.067l.91 1.256a.25.25 0 0 0 .405 0l.91-1.256a.25.25 0 0 1 .334-.067l1.322.812a.25.25 0 0 0 .374-.155l.36-1.508a.25.25 0 0 1 .282-.19l1.532.245a.25.25 0 0 0 .286-.286l-.244-1.532a.25.25 0 0 1 .189-.282l1.508-.36a.25.25 0 0 0 .155-.374l-.812-1.322a.25.25 0 0 1 .067-.333l1.256-.91a.25.25 0 0 0 0-.405l-1.256-.91a.25.25 0 0 1-.067-.334l.812-1.322a.25.25 0 0 0-.155-.374l-1.508-.36a.25.25 0 0 1-.19-.282l.245-1.532a.25.25 0 0 0-.286-.286l-1.532.244a.25.25 0 0 1-.282-.189l-.36-1.508a.25.25 0 0 0-.374-.155l-1.322.812a.25.25 0 0 1-.333-.067L8.203.28zM8 2.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="content-wrapper">
+            <div class="sticky-alerts"></div>
+
+            <div class="container">
+                <div class="row mx-10">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-6 mx-auto my-10 text-center" id="details">
+                        <div class="card">
+                            <h1 class="card-title h1 text-secondary" id="w-location-country"></h1>
+                            <h2>
+                                <a href="#locModal" class="edit-icon" data-toggle="tooltip"
+                                    data-title="Change Location">
+                                    <span id="w-location"></span>
+                                    <svg width="0.5em" height="0.5em" viewBox="0 0 16 16" class="bi bi-pencil"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                                        <path fill-rule="evenodd"
+                                            d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                                    </svg>
+                                </a>
+                            </h2>
+                            <h3 class="text-info" id="w-desc"></h3>
+                            <h4 class="text-success">
+                                <a class="edit-icon text-success" href="#locModal1" data-toggle="tooltip"
+                                    data-title="Change unit of Temperature">
+                                    Temperature: <span id="w-temp"></span>&deg;<span class="w-temp-unit"></span>
+                                    <svg width="0.75em" height="0.75em" viewBox="0 0 16 16" class="bi bi-pencil"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" />
+                                        <path fill-rule="evenodd"
+                                            d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z" />
+                                    </svg>
+                                </a>
+                            </h4>
+                            <ul class="list-group" id="w-details">
+                                <li class="list-group-item">
+                                    Feels Like:
+                                    <span id="w-feels-like"></span>&deg;<span class="w-temp-unit"></span>
+                                </li>
+                                <li class="list-group-item">Humidity: <span id="w-humidity"></span>&percnt;</li>
+                                <li class="list-group-item">Wind: <span id="w-wind"></span></li>
+                            </ul>
+                            <hr>
+                            <p class="text-danger">Last updated: <span id="w-last-updated"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-6 mx-auto my-10 my-lg-auto text-center">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-12 p-5">
+                                    <h1 class="text-success card-title h2">Today</h1>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6 p-5">
+                                    <img src="" alt="Weather Representation" id="w-rep-0">
+                                    <h3 class="h5" id="w-desc-0"></h3>
+                                    <h3 class="h1">
+                                        <strong><span id="w-temp-avg-0" class="text-secondary"
+                                                style="font-size: 7rem;"></span>&deg;<span
+                                                class="w-temp-unit">C</span></strong>
+                                    </h3>
+                                </div>
+                                <div class="col-lg-6 p-5">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            Minimum:
+                                            <strong><span class="text-primary"
+                                                    id="w-temp-min-0"></span>&deg;</strong><span
+                                                class="w-temp-unit"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Maximum:
+                                            <strong><span class="text-danger"
+                                                    id="w-temp-max-0"></span>&deg;</strong><span
+                                                class="w-temp-unit"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Chance of rainfall: <span id="w-rain-percent-0"></span>&percnt;
+                                        </li>
+                                        <li class="list-group-item">
+                                            Rainfall: <span id="w-rain-amt-0"></span>mm
+                                        </li>
+                                        <li class="list-group-item">
+                                            Average Humidity: <span id="w-humidity-0"></span>&percnt;
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="#" class="ml-auto moreDetails text-success" data-day="0">
+                                More Details >>>>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-10">
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-6 mx-auto my-5 text-center">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-12 p-5">
+                                    <h1 class="text-success card-title h2">Tomorrow</h1>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6 p-5">
+                                    <img src="" alt="Weather Representation" id="w-rep-1">
+                                    <h3 class="h5" id="w-desc-1"></h3>
+                                    <h3 class="h1">
+                                        <strong><span id="w-temp-avg-1" class="text-secondary"
+                                                style="font-size: 7rem;"></span>&deg;<span
+                                                class="w-temp-unit"></span></strong>
+                                    </h3>
+                                </div>
+                                <div class="col-lg-6 p-5">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            Minimum:
+                                            <strong><span class="text-primary"
+                                                    id="w-temp-min-1"></span>&deg;</strong><span
+                                                class="w-temp-unit"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Maximum:
+                                            <strong><span class="text-danger"
+                                                    id="w-temp-max-1"></span>&deg;</strong><span
+                                                class="w-temp-unit"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Chance of rainfall: <span id="w-rain-percent-1"></span>&percnt;
+                                        </li>
+                                        <li class="list-group-item">
+                                            Rainfall: <span id="w-rain-amt-1"></span>mm
+                                        </li>
+                                        <li class="list-group-item">
+                                            Average Humidity: <span id="w-humidity-1"></span>&percnt;
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="#" class="ml-auto moreDetails text-success" data-day="1">
+                                More Details >>>>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-10 col-lg-6 mx-auto my-5 text-center">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-12 p-5">
+                                    <h1 class="text-success card-title h2">Day After</h1>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6 p-5">
+                                    <img src="" alt="Weather Representation" id="w-rep-2">
+                                    <h3 class="h5" id="w-desc-2"></h3>
+                                    <h3 class="h1">
+                                        <strong><span id="w-temp-avg-2" class="text-secondary"
+                                                style="font-size: 7rem;"></span>&deg;<span
+                                                class="w-temp-unit"></span></strong>
+                                    </h3>
+                                </div>
+                                <div class="col-lg-6 p-5">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            Minimum:
+                                            <strong><span class="text-primary"
+                                                    id="w-temp-min-2"></span>&deg;</strong><span
+                                                class="w-temp-unit"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Maximum:
+                                            <strong><span class="text-danger"
+                                                    id="w-temp-max-2"></span>&deg;</strong><span
+                                                class="w-temp-unit"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Chance of rainfall: <span id="w-rain-percent-2"></span>&percnt;
+                                        </li>
+                                        <li class="list-group-item">
+                                            Rainfall: <span id="w-rain-amt-2"></span>mm
+                                        </li>
+                                        <li class="list-group-item">
+                                            Average Humidity: <span id="w-humidity-2"></span>&percnt;
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="#" class="ml-auto moreDetails text-success" data-day="2">
+                                More Details >>>>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="navbar navbar-fixed-bottom">
+            <div class="toTop" style="opacity: 0;" data-toggle="tooltip" data-title="Go to top"></div>
+            <div class="container justify-content-center">
+                <div class="navbar-content">
+                    <h6>
+                        <a href="https://github.com/humble-barnacle001/webapp-weather" class="nav-link text-primary">
+                            Open sourced on GitHub
+                            &nbsp;
+                            <img src="img/GitHub-logo.png" alt="GitHub Logo" class="footer-github-logo">
+                        </a>
+                    </h6>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Halfmoon JS -->
+    <script src="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.3/js/halfmoon.min.js"></script>
     <!-- Self JS -->
     <script src="js/storage.min.js"></script>
     <script src="js/ui.min.js"></script>
