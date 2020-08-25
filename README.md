@@ -1,17 +1,20 @@
+# Warning
+This branch is maintained only for legacy purposes and new fixes and features will not be added to the branch (except in case of serious security flaw). Sorry **:(**
+
 # webapp-weather
 A "vanilla" JS application on web to show weather of a particular city
 
 # Source Folder
-[src](https://github.com/humble-barnacle001/webapp-weather/tree/master/src)
+[src](https://github.com/humble-barnacle001/webapp-weather/tree/legacy/src)
 
-# Deployment
+# Deployment - Legacy Branch
 This project is deployed to a free [shared hosting service](https://www.netlify.com/) with support for lambda functions.
 
 ## Deploy Folder
-[public_deploy](https://github.com/humble-barnacle001/webapp-weather/tree/master/public_deploy)
+[public_deploy](https://github.com/humble-barnacle001/webapp-weather/tree/legacy/public_deploy)
 
 ## Deploy URL *for preview*
-[Weather Viewer](https://webapp-weather.netlify.app)
+[Legacy Weather Viewer](https://legacy--webapp-weather.netlify.app)
 
 ## Build Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d8af29e2-20cf-435c-ad05-f65cfe96823a/deploy-status)](https://app.netlify.com/sites/webapp-weather/deploys)
