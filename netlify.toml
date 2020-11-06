@@ -1,11 +1,11 @@
 [build]
-  base = "client"
+  base = "/"
 
-  publish = "build"
+  publish = "client/build"
 
-  command = "npm run build"
+  command = "npm install --prefix client; npm run build"
 
-  functions = "/.netlify/functions/"
+  functions = ".netlify/functions/"
 
 
 [build.processing]
