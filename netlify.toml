@@ -1,11 +1,11 @@
 [build]
-  base = "/"
+  base = "client"
 
-  publish = "client/build/"
+  publish = "build"
 
   # Default build command.
-  command = "npm install --prefix client; npm run build"
-  functions = ".netlify/functions/"
+  command = "npm run build"
+  functions = "../.netlify/functions/"
 
 
 [build.processing]
