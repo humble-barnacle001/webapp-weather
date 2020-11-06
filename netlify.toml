@@ -3,9 +3,9 @@
 
   publish = "build"
 
-  # Default build command.
   command = "npm run build"
-  functions = "../.netlify/functions/"
+
+  functions = "/.netlify/functions/"
 
 
 [build.processing]
