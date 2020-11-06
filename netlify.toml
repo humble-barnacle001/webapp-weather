@@ -1,0 +1,29 @@
+[build]
+  base = "/"
+
+  publish = "client/build/"
+
+  # Default build command.
+  command = "npm run build"
+  functions = ".netlify/functions/"
+
+
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  minify = true
+[build.processing.js]
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+
+# The following redirect is intended for use with most SPAs that handle
+# routing internally.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+

@@ -1,0 +1,28 @@
+{
+  "name": "webapp-weather",
+  "version": "1.0.0",
+  "description": "A ReactJS application on web to show weather of a particular city. This version uses [Halfmoon CSS Framework](https://www.gethalfmoon.com/) for styling and dark mode capabilities. For viewing the production version please visit the [master](https://github.com/humble-barnacle001/webapp-weather/tree/master) branch. For viewing the classic version please visit the [legacy](https://github.com/humble-barnacle001/webapp-weather/tree/legacy) branch.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run start --prefix client",
+    "build": "npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humble-barnacle001/webapp-weather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humble-barnacle001/webapp-weather/issues"
+  },
+  "homepage": "https://github.com/humble-barnacle001/webapp-weather#readme",
+  "dependencies": {
+    "country-list": "^2.2.0",
+    "create-react-app": "^4.0.0",
+    "node-fetch": "^2.6.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
+  }
+}
