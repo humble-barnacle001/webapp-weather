@@ -1,6 +1,8 @@
 {
   "builds": [
     { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "js/*.js", "use": "@vercel/static" },
     { "src": ".netlify/functions/*.js", "use": "@vercel/node" }
   ]
 }
