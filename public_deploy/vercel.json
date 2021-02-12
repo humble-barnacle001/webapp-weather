@@ -2,10 +2,10 @@
   "builds": [
     { "src": "*.html", "use": "@vercel/static" },
     { "src": "*.ico", "use": "@vercel/static" },
-    { "src": "csss/*.*", "use": "@vercel/static" },
+    { "src": "css/*.*", "use": "@vercel/static" },
     { "src": "icons/*.*", "use": "@vercel/static" },
     { "src": "js/*.*", "use": "@vercel/static" },
-    { "src": "img/*.js", "use": "@vercel/static" },
+    { "src": "img/*.*", "use": "@vercel/static" },
     { "src": ".netlify/functions/*.js", "use": "@vercel/node" }
   ]
 }
