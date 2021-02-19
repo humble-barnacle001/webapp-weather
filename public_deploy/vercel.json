@@ -8,6 +8,5 @@
     { "src": "img/*.*", "use": "@vercel/static" },
     { "src": ".netlify/functions/*.js", "use": "@vercel/node" }
   ],
-  "cleanUrls": true,
   "routes": [{ "src": "/.netlify/functions/weather_api.js", "dest": "/weather_api" }]
 }
