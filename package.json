@@ -20,7 +20,7 @@
   "homepage": "https://github.com/humble-barnacle001/webapp-weather#readme",
   "dependencies": {
     "country-list": "^2.2.0",
-    "create-react-app": "^4.0.2",
+    "create-react-app": "^4.0.3",
     "node-fetch": "^2.6.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
