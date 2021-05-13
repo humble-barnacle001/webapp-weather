@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.appmaker.zickit",
+      "sha256_cert_fingerprints": ["FD:70:F4:74:51:A6:85:15:D6:42:FE:9F:DF:08:46:7A:8C:21:93:00:C2:A4:81:F2:89:22:B8:10:19:2F:9F:27"]
+    }
+  }
+]
