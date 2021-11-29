@@ -1,0 +1,37 @@
+{
+  "name": "webapp-weather",
+  "version": "1.0.0",
+  "description": "A \"vanilla\" JS application on web to show weather of a particular city. This version uses [Halfmoon CSS Framework](https://www.gethalfmoon.com/) for styling and dark mode capabilities. For viewing the classic version please visit the [legacy](https://github.com/humble-barnacle001/webapp-weather/tree/legacy) branch.",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm i && netlify link",
+    "preview": "netlify dev",
+    "start": "npm run minify && npm run preview",
+    "dev": "concurrently \"npm run watch\" \"npm run start\"",
+    "minify": "npm run minify:js && npm run minify:css",
+    "minify:js": "for i in $( ls src/js/*.js ); do bi=$(basename $i); minify $i > public_deploy/js/${bi%.js}.min.js; done",
+    "minify:css": "for i in $( ls src/css/*.css ); do bi=$(basename $i); minify $i > public_deploy/css/${bi%.css}.min.css; done",
+    "watch": "nodemon --exec \"npm run minify\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humble-barnacle001/webapp-weather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humble-barnacle001/webapp-weather/issues"
+  },
+  "homepage": "https://github.com/humble-barnacle001/webapp-weather#readme",
+  "dependencies": {
+    "country-list": "^2.2.0",
+    "node-fetch": "^2.6.6"
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "minify": "^8.0.3",
+    "netlify-cli": "^8.0.3",
+    "nodemon": "^2.0.15"
+  }
+}

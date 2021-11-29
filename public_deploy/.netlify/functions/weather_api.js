@@ -1,7 +1,7 @@
 const apiKey = process.env.WEATHER_API_KEY;
 const uri = process.env.WEATHER_URI;
 const fetch = require('node-fetch');
-const { getCode, getName } = require('country-list');
+const { getName } = require('country-list');
 
 exports.handler = async (event, context) => {
     if (event.httpMethod === 'GET') {
@@ -28,6 +28,8 @@ exports.handler = async (event, context) => {
                 if (lrj.success == true && lrj.latitude != null && lrj.longitude != null) {
                     q = `${lrj.latitude},${lrj.longitude}`;
                 }
+                else
+                    q=`28.65,77.23`;
             }
             const response = await fetch(`${uri}?q=${q}&key=${apiKey}&days=3`);
             const data = await response.json();

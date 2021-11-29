@@ -1,0 +1,4 @@
+[build]
+  base = "/"
+  publish = "public_deploy/"
+  command = "npm i && npm run minify"
