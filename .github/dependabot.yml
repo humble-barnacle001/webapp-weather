@@ -10,6 +10,7 @@ updates:
   target-branch: react
   labels:
     - "react-branch"
+    - "dependencies"
 
 - package-ecosystem: npm
   directory: "/"
@@ -18,3 +19,4 @@ updates:
   target-branch: master
   labels:
     - "master-branch"
+    - "dependencies"
