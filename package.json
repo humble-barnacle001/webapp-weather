@@ -21,7 +21,7 @@
   "dependencies": {
     "country-list": "^2.2.0",
     "create-react-app": "^4.0.3",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0"
   }
