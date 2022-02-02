@@ -7,4 +7,14 @@ updates:
     time: "03:00"
     timezone: Asia/Kolkata
   open-pull-requests-limit: 10
-  target-branch: [react, master]
+  target-branch: react
+  labels:
+    - "react-branch"
+
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  target-branch: master
+  labels:
+    - "master-branch"
